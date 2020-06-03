@@ -7,7 +7,7 @@ namespace AspNetCRUD
     public class Conexao
     {
         //Atributo que faz conectar-se ao servidor MySQL, utilizando os parâmetros de conexão: host-localhost(Anfitrião local), port(porta), database(base de dados), pwd(senha); 
-        public string connect = "Server=localhost; Port=8889; Database=asp; Uid=root; Pwd=root;";
+        public string connect = "Server=localhost; Port=8889; Database=asp_controle_estoque; Uid=root; Pwd=root;";
 
         public MySqlConnection con = null;
         

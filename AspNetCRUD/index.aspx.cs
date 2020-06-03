@@ -30,7 +30,7 @@ namespace AspNetCRUD
         /// Este método carrega a página e atualiza os dados.
         /// </summary>
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {            
             nomeUsuario = HttpContext.Current.Request.QueryString["nome"];
             nivelUsuario = HttpContext.Current.Request.QueryString["nivel"];
 
@@ -258,7 +258,7 @@ namespace AspNetCRUD
             cmd.Parameters.AddWithValue("@descricao", txtdescricao.Text);
             cmd.Parameters.AddWithValue("@valor", txtvalor.Text);
             cmd.Parameters.AddWithValue("@quantidade", txtquantidade.Text);
-            cmd.Parameters.AddWithValue("@tempo", txttempo.Text);
+            cmd.Parameters.AddWithValue("@tempo", DateTime.Parse(txttempo.Text, new CultureInfo("pt-PT")));
             cmd.Parameters.AddWithValue("@fornecedor", txtfornecedor.Text);
             cmd.Parameters.AddWithValue("@id", idproduto.Value);
             cmd.Parameters.AddWithValue("@categoria", ddcategoria.SelectedValue);
@@ -304,17 +304,16 @@ namespace AspNetCRUD
             cmd = new MySqlCommand(sql, conexao.con);
             cmd.Parameters.AddWithValue("@id",  id);
             dataAdapter.SelectCommand = cmd;
-            dataAdapter.Fill(dataTable);
+            dataAdapter.Fill(dataTable);            
 
             idproduto.Value = dataTable.Rows[0][0].ToString();
             txtnome.Text = dataTable.Rows[0][1].ToString();
             txtdescricao.Text = dataTable.Rows[0][2].ToString();
             txtvalor.Text = dataTable.Rows[0][3].ToString();
             txtquantidade.Text = dataTable.Rows[0][4].ToString();
-            txttempo.Text = dataTable.Rows[0][5].ToString();
+            txttempo.Text = ((DateTime)dataTable.Rows[0][5]).ToString("dd/MM/yyyy");
             txtfornecedor.Text = dataTable.Rows[0][7].ToString();
-
-            lblmensagemerro.Text = (Int32.Parse(dataTable.Rows[0][3].ToString()) * Int32.Parse(dataTable.Rows[0][4].ToString())).ToString();
+            
 
             try
             {                
@@ -338,14 +337,14 @@ namespace AspNetCRUD
         {
             string sql = "INSERT INTO produtos (nome, descricao, valor, quantidade, tempo, id_categoria, fornecedor) VALUES (@nome, @descricao, @valor, @quantidade, @tempo, @categoria, @fornecedor)";
             MySqlCommand cmd;
-
+            
             conexao.AbrirCon();
             cmd = new MySqlCommand(sql, conexao.con);
             cmd.Parameters.AddWithValue("@nome", txtnome.Text);
             cmd.Parameters.AddWithValue("@descricao", txtdescricao.Text);
             cmd.Parameters.AddWithValue("@valor", txtvalor.Text);
-            cmd.Parameters.AddWithValue("@quantidade", txtquantidade.Text);
-            cmd.Parameters.AddWithValue("@tempo", txttempo.Text);
+            cmd.Parameters.AddWithValue("@quantidade", txtquantidade.Text);            
+            cmd.Parameters.AddWithValue("@tempo", DateTime.Parse(txttempo.Text, new CultureInfo("pt-PT")));
             cmd.Parameters.AddWithValue("@fornecedor", txtfornecedor.Text);
             cmd.Parameters.AddWithValue("@categoria", ddcategoria.SelectedValue);
 

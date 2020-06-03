@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>    
     <title>Controle De Estoque</title>
     <script runat="server">
     
@@ -92,10 +92,10 @@ a tabela(GridView) associada a um campo que vincula(BoundField) de um dado ocult
                 
                 <tr>
                    <td>
-                           <asp:Label Text="Tempo Total (dias)" runat="server" /> 
+                           <asp:Label Text="Data da Compra" runat="server" /> 
                     </td>
-                    <td colspan="2">
-                           <asp:TextBox ID="txttempo" placeholder="retorno ao mercado" runat="server" /> 
+                    <td colspan="2">                                                                                                                                  
+                            <asp:TextBox ID="txttempo" placeholder="Ex: 22/06/2020" runat="server" />
                     </td>
                 </tr>
                     
@@ -147,8 +147,8 @@ a tabela(GridView) associada a um campo que vincula(BoundField) de um dado ocult
                             <asp:BoundField DataField="nome" HeaderText="Nome do Produto"/>                       
                             <asp:BoundField DataField="descricao" HeaderText="Descrição" />
                             <asp:BoundField DataField="valor" HeaderText="Valor (R$)"/>
-                            <asp:BoundField DataField="quantidade" HeaderText="Quantidade (g/mês)" />
-                            <asp:BoundField DataField="tempo" HeaderText="Retorno ao mercado (dias)" />
+                            <asp:BoundField DataField="quantidade" HeaderText="Quantidade Gasta por Mês" />
+                            <asp:BoundField DataField="tempo" DataFormatString = "{0:dd/MM/yyyy}" HeaderText="Data da Compra" />
                             <asp:BoundField DataField="categoria" HeaderText="Categoria" />
                             <asp:BoundField DataField="fornecedor" HeaderText="Fornecedor" />
                             <asp:BoundField HeaderText="Precisa comprar (g)"/>
