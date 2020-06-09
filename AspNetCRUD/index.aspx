@@ -59,7 +59,7 @@ a tabela(GridView) associada a um campo que vincula(BoundField) de um dado ocult
                            <asp:Label Text="Produto" runat="server" /> 
                     </td>
                     <td colspan="2">
-                           <asp:TextBox ID="txtnome" AutoPostBack="true" placeholder="nome do produto" OnTextChanged="TxtProduto_TextChanged" runat="server" /> 
+                           <asp:TextBox ID="txtnome" AutoPostBack="true" placeholder="Nome do produto" OnTextChanged="TxtProduto_TextChanged" runat="server" /> 
                     </td>
                 </tr>  
                     
@@ -68,7 +68,7 @@ a tabela(GridView) associada a um campo que vincula(BoundField) de um dado ocult
                            <asp:Label Text="Descrição" runat="server" /> 
                     </td>
                     <td colspan="2">
-                           <asp:TextBox ID="txtdescricao" placeholder="observação" runat="server" /> 
+                           <asp:TextBox ID="txtdescricao" placeholder="Quantidade comprada" runat="server" /> 
                     </td>
                 </tr>
                     
@@ -77,25 +77,25 @@ a tabela(GridView) associada a um campo que vincula(BoundField) de um dado ocult
                            <asp:Label Text="Valor (R$)" runat="server" /> 
                     </td>
                     <td colspan="2">
-                           <asp:TextBox ID="txtvalor" placeholder="valor médio" runat="server" /> 
+                           <asp:TextBox ID="txtvalor" placeholder="Valor total comprado" runat="server" /> 
                     </td>
                 </tr>
-                    
-                <tr>
-                   <td>
-                           <asp:Label Text="Qtd Total (g)" runat="server" /> 
-                    </td>
-                    <td colspan="2">
-                           <asp:TextBox ID="txtquantidade" placeholder="consumo família(mês)" runat="server" /> 
-                    </td>
-                </tr>
-                
+                                                   
                 <tr>
                    <td>
                            <asp:Label Text="Data da Compra" runat="server" /> 
                     </td>
                     <td colspan="2">                                                                                                                                  
                             <asp:TextBox ID="txttempo" placeholder="Ex: 22/06/2020" runat="server" />
+                    </td>
+                </tr>
+                    
+                <tr>
+                   <td>
+                           <asp:Label Text="Duração" runat="server" /> 
+                    </td>
+                    <td colspan="2">
+                           <asp:TextBox ID="txtquantidade" placeholder="Em dias" runat="server" /> 
                     </td>
                 </tr>
                     
@@ -142,17 +142,21 @@ a tabela(GridView) associada a um campo que vincula(BoundField) de um dado ocult
                 
             </table>  
             <table class="table">
+                <tr>
+                   <td colspan="3">
+                           <H3> Lista de Compra </H3>
+                    </td>
+                </tr>
                 <asp:GridView ID="grid" class="btn table-info" runat="server" AutoGenerateColumns="false" >
                     <Columns>
                             <asp:BoundField DataField="nome" HeaderText="Nome do Produto"/>                       
-                            <asp:BoundField DataField="descricao" HeaderText="Descrição" />
+                            <asp:BoundField DataField="descricao" HeaderText="Quantidade Comprada" />
                             <asp:BoundField DataField="valor" HeaderText="Valor (R$)"/>
                             <asp:BoundField DataField="quantidade" HeaderText="Quantidade Gasta por Mês" />
                             <asp:BoundField DataField="tempo" DataFormatString = "{0:dd/MM/yyyy}" HeaderText="Data da Compra" />
                             <asp:BoundField DataField="categoria" HeaderText="Categoria" />
-                            <asp:BoundField DataField="fornecedor" HeaderText="Fornecedor" />
-                            <asp:BoundField HeaderText="Precisa comprar (g)"/>
-                            
+                            <asp:BoundField DataField="fornecedor" HeaderText="Fornecedor" />                                   
+                            <asp:BoundField DataField="tempoDuracao" HeaderText="Duração Até" />
                                                             
                             <asp:TemplateField>
                                 <ItemTemplate>
@@ -161,6 +165,11 @@ a tabela(GridView) associada a um campo que vincula(BoundField) de um dado ocult
                             </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
+                <tr>
+                   <td colspan="3">
+                           <H5> <pre> <asp:Label Text="" ID="lbltotalcompra" runat="server" ForeColor="Red" /> </pre> </H5>
+                    </td>
+                </tr>
             </table>
         </div> 
     </form>

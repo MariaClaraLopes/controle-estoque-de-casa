@@ -29,9 +29,9 @@ namespace AspNetCRUD {
 		
 		protected System.Web.UI.WebControls.TextBox txtvalor;
 		
-		protected System.Web.UI.WebControls.TextBox txtquantidade;
-		
 		protected System.Web.UI.WebControls.TextBox txttempo;
+		
+		protected System.Web.UI.WebControls.TextBox txtquantidade;
 		
 		protected System.Web.UI.WebControls.TextBox txtfornecedor;
 		
@@ -50,5 +50,7 @@ namespace AspNetCRUD {
 		protected System.Web.UI.WebControls.GridView grid;
 		
 		protected System.Web.UI.WebControls.Button BtnSelecionar;
+		
+		protected System.Web.UI.WebControls.Label lbltotalcompra;
 	}
 }

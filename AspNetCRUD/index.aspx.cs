@@ -100,6 +100,19 @@ namespace AspNetCRUD
                 // atribui verdadeiro na visualização da tabela;
                 grid.Visible = true;
 
+                dataTable.Columns.Add("tempoDuracao", typeof(string));
+
+                double totalCompra = 0;
+                foreach (DataRow dr in dataTable.Rows) 
+                {
+                    DateTime dataCompra = (DateTime)dr["tempo"];                    
+                    dr["tempoDuracao"] = dataCompra.AddDays((int)dr["quantidade"]).ToString("dd/MM/yyyy");
+
+                    totalCompra += Convert.ToDouble(dr["valor"]);
+                }
+
+                lbltotalcompra.Text = " Total da Lista de Compra R$ " + totalCompra.ToString();
+
                 grid.DataSource = dataTable;
                 grid.DataBind();
             }
